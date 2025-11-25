@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Mabini Batangas Tourism | Discover Beaches, Diving, and Nature - Experience world-class diving, breathtaking sunsets, and rich coastal culture in Mabini, Batangas."
+    />
+    <title>
+      Mabini Batangas Tourism | Discover Beaches, Diving, and Nature
+    </title>
+
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Nunito+Sans:wght@400;600&display=swap');
+
+      html,
+      body {
+        color: hsl(210, 15%, 15%);
+      }
+
+      @keyframes aurora {
+        0%,
+        100% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+      }
+
+      .aurora-text {
+        background: linear-gradient(
+          90deg,
+          hsl(191, 60%, 32%),
+          hsl(190, 58%, 48%),
+          hsl(14, 74%, 58%),
+          hsl(191, 60%, 32%)
+        );
+        background-size: 200% auto;
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: aurora 3s linear infinite;
+      }
+
+      @keyframes gradient-shift {
+        0%,
+        100% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+      }
+
+      .gradient-shift {
+        background-size: 200% 200%;
+        animation: gradient-shift 8s ease infinite;
+      }
+
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 50;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        align-items: center;
+        justify-content: center;
+      }
+
+      .modal.active {
+        display: flex;
+      }
+
+      .fade-in {
+        opacity: 0;
+        transform: translateY(30px);
+        transition:
+          opacity 0.6s ease-out,
+          transform 0.6s ease-out;
+      }
+
+      .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    </style>
+    <link rel="stylesheet" href="globals.css" />
+  </head>
+  <body class="bg-neutral text-neutral-foreground">
+    <!-- Navigation -->
+    <nav
+      class="fixed top-0 left-0 right-0 z-40 bg-neutral-foreground/95 backdrop-blur-sm shadow-sm"
+    >
+      <div class="max-w-7xl mx-auto px-8 lg:px-16">
+        <div class="flex items-center justify-between h-16 lg:h-20">
+          <div class="flex-shrink-0">
+            <a href="#hero" class="text-xl lg:text-2xl font-bold text-primary"
+              >Mabini</a
+            >
+          </div>
+
+          <!-- Desktop Navigation -->
+          <div class="hidden md:flex space-x-8">
+            <a
+              href="#about"
+              class="text-neutral-foreground hover:text-primary transition-colors duration-300 cursor-pointer py-2 px-4"
+              >About</a
+            >
+            <a
+              href="#features"
+              class="text-neutral-foreground hover:text-primary transition-colors duration-300 cursor-pointer py-2 px-4"
+              >Attractions</a
+            >
+            <a
+              href="#map"
+              class="text-neutral-foreground hover:text-primary transition-colors duration-300 cursor-pointer py-2 px-4"
+              >Location</a
+            >
+            <a
+              href="#testimonials"
+              class="text-neutral-foreground hover:text-primary transition-colors duration-300 cursor-pointer py-2 px-4"
+              >Testimonials</a
+            >
+          </div>
+
+          <!-- Mobile Menu Button -->
+          <button
+            id="mobile-menu-button"
+            class="md:hidden p-2 text-neutral-foreground hover:text-primary transition-colors"
+            aria-label="Toggle mobile menu"
+          >
+            <svg
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              ></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div
+        id="mobile-menu"
+        class="hidden md:hidden bg-neutral-foreground border-t border-gray-200"
+      >
+        <div class="px-8 py-4 space-y-2">
+          <a
+            href="#about"
+            class="block text-neutral-foreground hover:text-primary transition-colors duration-300 cursor-pointer py-3 px-4"
+            >About</a
+          >
+          <a
+            href="#features"
+            class="block text-neutral-foreground hover:text-primary transition-colors duration-300 cursor-pointer py-3 px-4"
+            >Attractions</a
+          >
+          <a
+            href="#map"
+            class="block text-neutral-foreground hover:text-primary transition-colors duration-300 cursor-pointer py-3 px-4"
+            >Location</a
+          >
+          <a
+            href="#testimonials"
+            class="block text-neutral-foreground hover:text-primary transition-colors duration-300 cursor-pointer py-3 px-4"
+            >Testimonials</a
+          >
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section
+      id="hero"
+      class="relative w-full h-screen flex items-center justify-center overflow-hidden"
+    >
+      <div class="absolute inset-0 w-full h-full">
+        <video
+          aria-label="mabini underwater coral reef"
+          src="https://c.animaapp.com/mie8l7l51v4Vpi/img/ai_1.mp4"
+          poster="https://c.animaapp.com/mie8l7l51v4Vpi/img/ai_1-poster.png"
+          class="w-full h-full object-cover"
+          autoplay=""
+          loop=""
+          muted=""
+          playsinline=""
+        ></video>
+        <div
+          class="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/0 to-black/80"
+        ></div>
+      </div>
+
+      <div class="relative z-10 text-center px-8 max-w-4xl mx-auto">
+        <h1
+          class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-primary-foreground"
+        >
+          Discover the <span class="aurora-text">Wonders</span> of Mabini,
+          Batangas
+        </h1>
+        <p class="text-lg md:text-xl lg:text-2xl mb-12 text-primary-foreground">
+          Experience world-class diving, breathtaking sunsets, and rich coastal
+          culture.
+        </p>
+        <a
+          href="#features"
+          class="inline-block bg-primary text-primary-foreground font-normal px-8 py-4 rounded text-base hover:bg-primary/90 transition-all duration-300 transform hover:scale-105"
+        >
+          Plan Your Trip
+        </a>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 lg:py-24 px-8 lg:px-16 bg-neutral">
+      <div class="max-w-7xl mx-auto">
+        <div class="grid md:grid-cols-2 gap-12 items-center fade-in">
+          <div>
+            <h2
+              class="text-3xl lg:text-4xl font-bold mb-6 text-neutral-foreground"
+            >
+              Welcome to Mabini
+            </h2>
+            <p
+              class="text-base lg:text-lg text-neutral-foreground leading-relaxed mb-4"
+            >
+              Mabini is a coastal municipality in Batangas, Philippines,
+              renowned for its pristine beaches, vibrant marine life, and warm
+              hospitality. Known as the diving capital of the Philippines,
+              Mabini offers world-class underwater experiences in Anilao, where
+              colorful coral reefs and diverse marine species await exploration.
+            </p>
+            <p
+              class="text-base lg:text-lg text-neutral-foreground leading-relaxed"
+            >
+              Beyond diving, visitors can enjoy scenic hiking trails like Mount
+              Gulugod Baboy, relax at beachfront resorts, and immerse themselves
+              in the rich local culture. Whether you're seeking adventure or
+              tranquility, Mabini promises an unforgettable coastal escape.
+            </p>
+          </div>
+          <div>
+            <img
+              src="https://c.animaapp.com/mie8l7l51v4Vpi/img/ai_2.png"
+              alt="mabini coastal view"
+              class="w-full h-auto rounded shadow-none"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-16 lg:py-24 px-8 lg:px-16 bg-gray-50">
+      <div class="max-w-7xl mx-auto">
+        <h2
+          class="text-3xl lg:text-4xl font-bold text-center mb-8 text-neutral-foreground fade-in"
+        >
+          Explore Major Attractions
+        </h2>
+
+        <!-- Filter Buttons -->
+        <div class="flex flex-wrap justify-center gap-4 mb-12 fade-in">
+          <button
+            class="filter-btn active px-6 py-3 rounded-full font-semibold transition-all duration-300"
+            data-filter="all"
+          >
+            All Attractions
+          </button>
+          <button
+            class="filter-btn px-6 py-3 rounded-full font-semibold transition-all duration-300"
+            data-filter="diving"
+          >
+            Diving
+          </button>
+          <button
+            class="filter-btn px-6 py-3 rounded-full font-semibold transition-all duration-300"
+            data-filter="beaches"
+          >
+            Beaches
+          </button>
+          <button
+            class="filter-btn px-6 py-3 rounded-full font-semibold transition-all duration-300"
+            data-filter="hiking"
+          >
+            Hiking
+          </button>
+          <button
+            class="filter-btn px-6 py-3 rounded-full font-semibold transition-all duration-300"
+            data-filter="culture"
+          >
+            Culture
+          </button>
+        </div>
+
+        <div id="attractions-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Card 1: Diving -->
+          <div
+            class="attraction-card bg-neutral-foreground rounded overflow-hidden cursor-pointer transition-all duration-300 hover:scale-105 fade-in"
+            data-category="diving"
+            data-modal="modal-diving"
+          >
+            <img
+              src="https://c.animaapp.com/mie8l7l51v4Vpi/img/ai_3.png"
+              alt="diver exploring marine life"
+              class="w-full h-64 object-cover"
+              loading="lazy"
+            />
+            <div class="p-6">
+              <span class="inline-block px-3 py-1 bg-primary text-primary-foreground text-sm rounded-full mb-3">Diving</span>
+              <h3 class="text-xl font-bold mb-3 text-primary-foreground">
+                Diving and Marine Life
+              </h3>
+              <p class="text-primary-foreground/80">
+                Explore vibrant coral reefs and encounter diverse marine species
+                in crystal-clear waters.
+              </p>
+            </div>
+          </div>
+
+          <!-- Card 2: Beaches -->
+          <div
+            class="attraction-card bg-neutral-foreground rounded overflow-hidden cursor-pointer transition-all duration-300 hover:scale-105 fade-in"
+            data-category="beaches"
+            data-modal="modal-beaches"
+          >
+            <img
+              src="https://c.animaapp.com/mie8l7l51v4Vpi/img/ai_4.png"
+              alt="mabini beach resort"
+              class="w-full h-64 object-cover"
+              loading="lazy"
+            />
+            <div class="p-6">
+              <span class="inline-block px-3 py-1 bg-secondary text-primary-foreground text-sm rounded-full mb-3">Beaches</span>
+              <h3 class="text-xl font-bold mb-3 text-primary-foreground">
+                Beaches and Resorts
+              </h3>
+              <p class="text-primary-foreground/80">
+                Relax at pristine beaches and enjoy world-class hospitality at
+                beachfront resorts.
+              </p>
+            </div>
+          </div>
+
+          <!-- Card 3: Hiking -->
+          <div
+            class="attraction-card bg-neutral-foreground rounded overflow-hidden cursor-pointer transition-all duration-300 hover:scale-105 fade-in"
+            data-category="hiking"
+            data-modal="modal-hiking"
+          >
+            <img
+              src="https://c.animaapp.com/mie8l7l51v4Vpi/img/ai_5.png"
+              alt="mount gulugod baboy trail"
+              class="w-full h-64 object-cover"
+              loading="lazy"
+            />
+            <div class="p-6">
+              <span class="inline-block px-3 py-1 bg-tertiary text-tertiary-foreground text-sm rounded-full mb-3">Hiking</span>
+              <h3 class="text-xl font-bold mb-3 text-primary-foreground">
+                Hiking and Nature Trails
+              </h3>
+              <p class="text-primary-foreground/80">
+                Trek scenic trails like Mount Gulugod Baboy and witness
+                breathtaking panoramic views.
+              </p>
+            </div>
+          </div>
+
+          <!-- Card 4: Snorkeling -->
+          <div
+            class="attraction-card bg-neutral-foreground rounded overflow-hidden cursor-pointer transition-all duration-300 hover:scale-105 fade-in"
+            data-category="diving"
+            data-modal="modal-snorkeling"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&h=600&fit=crop"
+              alt="snorkeling in mabini"
+              class="w-full h-64 object-cover"
+              loading="lazy"
+            />
+            <div class="p-6">
+              <span class="inline-block px-3 py-1 bg-primary text-primary-foreground text-sm rounded-full mb-3">Diving</span>
+              <h3 class="text-xl font-bold mb-3 text-primary-foreground">
+                Snorkeling Adventures
+              </h3>
+              <p class="text-primary-foreground/80">
+                Discover shallow reefs teeming with colorful fish and marine life perfect for beginners.
+              </p>
+            </div>
+          </div>
+
+          <!-- Card 5: Island Hopping -->
+          <div
+            class="attraction-card bg-neutral-foreground rounded overflow-hidden cursor-pointer transition-all duration-300 hover:scale-105 fade-in"
+            data-category="beaches"
+            data-modal="modal-island"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&h=600&fit=crop&q=80"
+              alt="island hopping tour"
+              class="w-full h-64 object-cover"
+              loading="lazy"
+            />
+            <div class="p-6">
+              <span class="inline-block px-3 py-1 bg-secondary text-primary-foreground text-sm rounded-full mb-3">Beaches</span>
+              <h3 class="text-xl font-bold mb-3 text-primary-foreground">
+                Island Hopping Tours
+              </h3>
+              <p class="text-primary-foreground/80">
+                Visit nearby islands and hidden coves with stunning beaches and crystal waters.
+              </p>
+            </div>
+          </div>
+
+          <!-- Card 6: Local Culture -->
+          <div
+            class="attraction-card bg-neutral-foreground rounded overflow-hidden cursor-pointer transition-all duration-300 hover:scale-105 fade-in"
+            data-category="culture"
+            data-modal="modal-culture"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&h=600&fit=crop&q=80"
+              alt="local cultural experience"
+              class="w-full h-64 object-cover"
+              loading="lazy"
+            />
+            <div class="p-6">
+              <span class="inline-block px-3 py-1 bg-accent text-accent-foreground text-sm rounded-full mb-3">Culture</span>
+              <h3 class="text-xl font-bold mb-3 text-primary-foreground">
+                Local Culture & Cuisine
+              </h3>
+              <p class="text-primary-foreground/80">
+                Experience authentic Filipino hospitality and savor fresh seafood delicacies.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Modals -->
+    <div id="modal-diving" class="modal">
+      <div class="bg-neutral-foreground rounded max-w-2xl mx-4 p-8 relative">
+        <button
+          class="absolute top-4 right-4 text-primary-foreground hover:text-primary text-2xl close-modal"
+          aria-label="Close modal"
+        >
+          ×
+        </button>
+        <h3 class="text-2xl font-bold mb-4 text-primary-foreground">
+          Diving and Marine Life
+        </h3>
+        <p class="text-primary-foreground/80 mb-4">
+          Mabini, particularly Anilao, is celebrated as the diving capital of
+          the Philippines. The area boasts over 40 dive sites featuring vibrant
+          coral gardens, dramatic wall dives, and an incredible diversity of
+          marine life. From macro photography enthusiasts seeking nudibranchs
+          and pygmy seahorses to adventurers exploring underwater caves, Mabini
+          offers unforgettable diving experiences for all skill levels.
+        </p>
+        <p class="text-primary-foreground/80">
+          The warm, clear waters provide excellent visibility year-round, making
+          it a premier destination for both beginner and advanced divers.
+        </p>
+      </div>
+    </div>
+
+    <div id="modal-beaches" class="modal">
+      <div class="bg-neutral-foreground rounded max-w-2xl mx-4 p-8 relative">
+        <button
+          class="absolute top-4 right-4 text-primary-foreground hover:text-primary text-2xl close-modal"
+          aria-label="Close modal"
+        >
+          ×
+        </button>
+        <h3 class="text-2xl font-bold mb-4 text-primary-foreground">
+          Beaches and Resorts
+        </h3>
+        <p class="text-primary-foreground/80 mb-4">
+          Mabini's coastline is dotted with pristine beaches and world-class
+          resorts that cater to every type of traveler. Whether you're looking
+          for a romantic getaway, a family vacation, or a solo retreat, you'll
+          find beachfront accommodations offering stunning ocean views, fresh
+          seafood, and warm Filipino hospitality.
+        </p>
+        <p class="text-primary-foreground/80">
+          Many resorts provide direct beach access, infinity pools, and spa
+          services, ensuring a relaxing and rejuvenating stay by the sea.
+        </p>
+      </div>
+    </div>
+
+    <div id="modal-hiking" class="modal">
+      <div class="bg-neutral-foreground rounded max-w-2xl mx-4 p-8 relative">
+        <button
+          class="absolute top-4 right-4 text-primary-foreground hover:text-primary text-2xl close-modal"
+          aria-label="Close modal"
+        >
+          ×
+        </button>
+        <h3 class="text-2xl font-bold mb-4 text-primary-foreground">
+          Hiking and Nature Trails
+        </h3>
+        <p class="text-primary-foreground/80 mb-4">
+          For those who love the outdoors, Mabini offers scenic hiking trails
+          that showcase the region's natural beauty. Mount Gulugod Baboy is a
+          popular destination, featuring a relatively easy trek that rewards
+          hikers with panoramic views of Taal Lake, Batangas Bay, and the
+          surrounding islands.
+        </p>
+        <p class="text-primary-foreground/80">
+          The trail is perfect for sunrise or sunset hikes, providing
+          breathtaking vistas and photo opportunities. It's an ideal activity
+          for nature lovers and adventure seekers alike.
+        </p>
+      </div>
+    </div>
+
+    <div id="modal-snorkeling" class="modal">
+      <div class="bg-neutral-foreground rounded max-w-2xl mx-4 p-8 relative">
+        <button
+          class="absolute top-4 right-4 text-primary-foreground hover:text-primary text-2xl close-modal"
+          aria-label="Close modal"
+        >
+          ×
+        </button>
+        <h3 class="text-2xl font-bold mb-4 text-primary-foreground">
+          Snorkeling Adventures
+        </h3>
+        <p class="text-primary-foreground/80 mb-4">
+          Perfect for beginners and families, Mabini's shallow reefs offer excellent snorkeling opportunities. The calm, clear waters allow you to observe colorful tropical fish, sea turtles, and vibrant coral formations just meters from the shore.
+        </p>
+        <p class="text-primary-foreground/80">
+          Many resorts provide snorkeling equipment and guided tours to the best spots, ensuring a safe and memorable underwater experience for all ages.
+        </p>
+      </div>
+    </div>
+
+    <div id="modal-island" class="modal">
+      <div class="bg-neutral-foreground rounded max-w-2xl mx-4 p-8 relative">
+        <button
+          class="absolute top-4 right-4 text-primary-foreground hover:text-primary text-2xl close-modal"
+          aria-label="Close modal"
+        >
+          ×
+        </button>
+        <h3 class="text-2xl font-bold mb-4 text-primary-foreground">
+          Island Hopping Tours
+        </h3>
+        <p class="text-primary-foreground/80 mb-4">
+          Embark on exciting island hopping adventures to explore nearby islands and hidden coves. Each destination offers unique experiences, from secluded beaches perfect for picnics to vibrant coral gardens ideal for snorkeling.
+        </p>
+        <p class="text-primary-foreground/80">
+          Local boat operators provide customizable tours that can include multiple stops, fresh seafood lunches, and opportunities for swimming, snorkeling, and photography.
+        </p>
+      </div>
+    </div>
+
+    <div id="modal-culture" class="modal">
+      <div class="bg-neutral-foreground rounded max-w-2xl mx-4 p-8 relative">
+        <button
+          class="absolute top-4 right-4 text-primary-foreground hover:text-primary text-2xl close-modal"
+          aria-label="Close modal"
+        >
+          ×
+        </button>
+        <h3 class="text-2xl font-bold mb-4 text-primary-foreground">
+          Local Culture & Cuisine
+        </h3>
+        <p class="text-primary-foreground/80 mb-4">
+          Immerse yourself in the warm Filipino hospitality and rich cultural traditions of Mabini. Visit local markets, interact with friendly residents, and learn about the coastal way of life that has sustained communities for generations.
+        </p>
+        <p class="text-primary-foreground/80">
+          Don't miss the opportunity to savor fresh seafood prepared in traditional Filipino styles. From grilled fish to kinilaw (Filipino ceviche), the local cuisine showcases the bounty of the sea.
+        </p>
+      </div>
+    </div>
+
+    <!-- Map Section -->
+    <section id="map" class="py-16 lg:py-24 px-8 lg:px-16 bg-neutral">
+      <div class="max-w-7xl mx-auto">
+        <h2
+          class="text-3xl lg:text-4xl font-bold text-center mb-12 text-neutral-foreground fade-in"
+        >
+          Find Your Next Adventure in Mabini, Batangas
+        </h2>
+
+        <div
+          class="w-full h-96 lg:h-[500px] rounded overflow-hidden shadow-none fade-in"
+        >
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d62422.89193087891!2d120.85!3d13.72!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd7a3e0c8e5e5d%3A0x3e3e3e3e3e3e3e3e!2sMabini%2C%20Batangas!5e0!3m2!1sen!2sph!4v1234567890123!5m2!1sen!2sph&amp;key=YOUR_API_KEY"
+            width="100%"
+            height="100%"
+            style="border: 0"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Map showing Mabini, Batangas location"
+          ></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-16 lg:py-24 px-8 lg:px-16 bg-gray-50">
+      <div class="max-w-4xl mx-auto">
+        <h2
+          class="text-3xl lg:text-4xl font-bold text-center mb-16 text-neutral-foreground fade-in"
+        >
+          What Visitors Say
+        </h2>
+
+        <div class="relative">
+          <div id="testimonial-slider" class="text-center">
+            <div class="testimonial-slide active">
+              <p class="text-lg lg:text-xl italic text-neutral-foreground mb-6">
+                "Mabini exceeded all our expectations. The diving was
+                spectacular, and the local hospitality made us feel right at
+                home. We can't wait to return!"
+              </p>
+              <p class="font-semibold text-neutral-foreground">
+                — Sarah Johnson, Sydney
+              </p>
+            </div>
+
+            <div class="testimonial-slide hidden">
+              <p class="text-lg lg:text-xl italic text-neutral-foreground mb-6">
+                "The hike up Mount Gulugod Baboy was breathtaking. The views at
+                sunrise were absolutely worth the early wake-up call. Highly
+                recommend!"
+              </p>
+              <p class="font-semibold text-neutral-foreground">
+                — Marco Reyes, Manila
+              </p>
+            </div>
+
+            <div class="testimonial-slide hidden">
+              <p class="text-lg lg:text-xl italic text-neutral-foreground mb-6">
+                "Our family had an amazing time at the beach resorts. The kids
+                loved snorkeling, and we enjoyed the fresh seafood and stunning
+                sunsets every evening."
+              </p>
+              <p class="font-semibold text-neutral-foreground">
+                — Emily Chen, Singapore
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section
+      id="cta"
+      class="py-16 lg:py-24 px-8 lg:px-16 bg-gradient-to-r from-primary to-secondary gradient-shift"
+    >
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-3xl lg:text-4xl font-bold mb-8 text-primary-foreground">
+          Ready to Explore Mabini?
+        </h2>
+        <a
+          href="#features"
+          class="inline-block bg-tertiary text-tertiary-foreground font-normal px-8 py-4 rounded text-base hover:bg-tertiary/90 transition-all duration-300 transform hover:scale-105"
+        >
+          Explore Mabini Now
+        </a>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-primary text-primary-foreground py-12 px-8 lg:px-16">
+      <div class="max-w-7xl mx-auto">
+        <div class="grid md:grid-cols-3 gap-8 mb-8">
+          <div>
+            <h3 class="text-xl font-bold mb-4 text-primary-foreground">
+              Mabini Tourism
+            </h3>
+            <p class="text-primary-foreground">
+              Discover the beauty of Mabini, Batangas - your gateway to coastal
+              paradise.
+            </p>
+          </div>
+
+          <div>
+            <h4 class="text-lg font-semibold mb-4 text-primary-foreground">
+              Quick Links
+            </h4>
+            <ul class="space-y-2">
+              <li>
+                <a
+                  href="#about"
+                  class="text-primary-foreground hover:text-secondary transition-colors"
+                  >About</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#features"
+                  class="text-primary-foreground hover:text-secondary transition-colors"
+                  >Attractions</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#map"
+                  class="text-primary-foreground hover:text-secondary transition-colors"
+                  >Location</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#testimonials"
+                  class="text-primary-foreground hover:text-secondary transition-colors"
+                  >Testimonials</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="text-lg font-semibold mb-4 text-primary-foreground">
+              Contact
+            </h4>
+            <p class="text-primary-foreground mb-2">
+              Email: info@mabini-tourism.ph
+            </p>
+            <p class="text-primary-foreground">Phone: +63 123 456 7890</p>
+          </div>
+        </div>
+
+        <div class="border-t border-primary-foreground/20 pt-8 text-center">
+          <p class="text-primary-foreground">
+            © 2024 Mabini Tourism. All rights reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Mobile menu toggle
+      const mobileMenuButton = document.getElementById('mobile-menu-button');
+      const mobileMenu = document.getElementById('mobile-menu');
+
+      mobileMenuButton.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+
+      // Close mobile menu when clicking a link
+      const mobileLinks = mobileMenu.querySelectorAll('a');
+      mobileLinks.forEach((link) => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.add('hidden');
+        });
+      });
+
+      // Filter functionality
+      const filterButtons = document.querySelectorAll('.filter-btn');
+      const attractionCards = document.querySelectorAll('.attraction-card');
+
+      filterButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+          const filter = button.getAttribute('data-filter');
+
+          // Update active button
+          filterButtons.forEach((btn) => btn.classList.remove('active'));
+          button.classList.add('active');
+
+          // Filter cards with animation
+          attractionCards.forEach((card) => {
+            const category = card.getAttribute('data-category');
+
+            if (filter === 'all' || category === filter) {
+              card.style.display = 'block';
+              setTimeout(() => {
+                card.style.opacity = '1';
+                card.style.transform = 'scale(1)';
+              }, 10);
+            } else {
+              card.style.opacity = '0';
+              card.style.transform = 'scale(0.8)';
+              setTimeout(() => {
+                card.style.display = 'none';
+              }, 300);
+            }
+          });
+        });
+      });
+
+      // Modal functionality
+      const attractionCardsModal = document.querySelectorAll('.attraction-card');
+      const modals = document.querySelectorAll('.modal');
+      const closeButtons = document.querySelectorAll('.close-modal');
+
+      attractionCardsModal.forEach((card) => {
+        card.addEventListener('click', () => {
+          const modalId = card.getAttribute('data-modal');
+          const modal = document.getElementById(modalId);
+          if (modal) {
+            modal.classList.add('active');
+          }
+        });
+      });
+
+      closeButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+          modals.forEach((modal) => modal.classList.remove('active'));
+        });
+      });
+
+      modals.forEach((modal) => {
+        modal.addEventListener('click', (e) => {
+          if (e.target === modal) {
+            modal.classList.remove('active');
+          }
+        });
+      });
+
+      // Testimonial slider
+      let currentSlide = 0;
+      const slides = document.querySelectorAll('.testimonial-slide');
+      const totalSlides = slides.length;
+
+      function showSlide(index) {
+        slides.forEach((slide, i) => {
+          if (i === index) {
+            slide.classList.remove('hidden');
+            slide.classList.add('active');
+          } else {
+            slide.classList.add('hidden');
+            slide.classList.remove('active');
+          }
+        });
+      }
+
+      function nextSlide() {
+        currentSlide = (currentSlide + 1) % totalSlides;
+        showSlide(currentSlide);
+      }
+
+      setInterval(nextSlide, 5000);
+
+      // Scroll animations
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px',
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll('.fade-in').forEach((el) => {
+        observer.observe(el);
+      });
+    </script>
+  </body>
+</html>
